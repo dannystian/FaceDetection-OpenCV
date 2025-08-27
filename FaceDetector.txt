@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(TestingOpenCV LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(OpenCV REQUIRED)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(TestingOpenCV main.cpp)
+target_link_libraries(TestingOpenCV ${OpenCV_LIBS})
+
+include(GNUInstallDirs)
+install(TARGETS TestingOpenCV
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
